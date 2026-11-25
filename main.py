@@ -16,7 +16,9 @@ MAX_CHARS = 180
 
 
 def gate_ok(text):
-    """The sealed gate: 1-180 chars, UTF-8, not only whitespace."""
+    """The sealed gate: 1-180 chars, UTF-8, not only whitespace, one line."""
+    if "\n" in text or "\r" in text:
+        return False
     if not (MIN_CHARS <= len(text) <= MAX_CHARS):
         return False
     if not text.strip():
